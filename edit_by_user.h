@@ -7,13 +7,6 @@ void update_data(int NOU, struct person p[]){
         printf("Error opening file!\n");
         exit(1);
     }
-
-    for (int i = 0; i < NOU; i++) {
-        fprintf(fp, "%s %s %lf %s %d %d\n", p[i].name, p[i].surname, p[i].phone, p[i].address, p[i].ID, p[i].dueDate);
-        fprintf(fp, "%d", p[i].userBooks.numOfBooks);
-        for(int j=0; j<p[i].userBooks.numOfBooks; j++){
-            printf(fp, "%s", p[i].userBooks.BB[j].title);
-        }
     }
 
     fclose(fp);
