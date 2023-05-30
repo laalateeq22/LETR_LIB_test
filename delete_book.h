@@ -21,6 +21,7 @@ void delete_by_author(const char *filename, char *authorToDelete)
             fputs(line, tempFile);
         }
     }
+
     // Close both files
     fclose(fptr);
     fclose(tempFile);
@@ -37,7 +38,6 @@ void delete_by_author(const char *filename, char *authorToDelete)
         perror("Error renaming the temporary file!\n");
         return;
     }
-
     printf("Book written by:'%s' deleted successfully.\n", authorToDelete);
 }
 

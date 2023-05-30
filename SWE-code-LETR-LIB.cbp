@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="add_book.h" />
+		<Unit filename="book.txt" />
+		<Unit filename="delete_book.h" />
 		<Unit filename="delete_user.h" />
 		<Unit filename="edit_by_user.h" />
 		<Unit filename="get_data.h" />

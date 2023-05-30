@@ -1,7 +1,6 @@
 #ifndef DELETE_USER_H_INCLUDED
 #define DELETE_USER_H_INCLUDED
 //tea
-
 void delete_user(const char* filename, const char* key, int search_type) {
     FILE* fp = fopen(filename, "r");
     if (fp == NULL) {
@@ -23,7 +22,7 @@ void delete_user(const char* filename, const char* key, int search_type) {
 
     while (fgets(line, sizeof(line), fp) != NULL) {
         struct person p;
-        sscanf(line, "%s %s %lf %s %d %d", p.name, p.surname, &p.phone, p.address, &p.ID, &p.dueDate);
+        sscanf(line, "%s %s %lf %s %d %d %d %s", p.name, p.surname, &p.phone, p.address, &p.ID, &p.dueDate , &p.dueDate ,p.BB);
 
         if (!((search_type == 1 && p.ID == atoi(key)) ||
               (search_type == 2 && strcmp(p.name, key) == 0) ||
@@ -50,5 +49,4 @@ void delete_user(const char* filename, const char* key, int search_type) {
         printf("User with %s not found in the file.\n", key);
     }
 }
-
 #endif // DELETE_USER_H_INCLUDED

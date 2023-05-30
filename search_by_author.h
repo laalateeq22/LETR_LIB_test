@@ -19,7 +19,7 @@ void search_books_by_author(const char* filename, const char* Author)
         }
     }
     if(found != 1){
-        printf("the author you are looking for was not found");
+        printf("the author you are looking for was not found\n");
     }
     fclose(fp);
 }

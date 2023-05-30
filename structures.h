@@ -6,10 +6,7 @@ struct book{
     int amount; //number of books available
     int quantity;
 };
-struct borrowedBook{
-    int numOfBooks;
-    struct book BB[5];
-};
+
 struct person{
     char name[20];
     char surname[20];
@@ -17,7 +14,8 @@ struct person{
     char address[20];
     int ID;
     int dueDate;
-    struct borrowedBook userBooks;
+    int numOfBooks;
+    char BB[5][50];
 };
 
 #endif // STRUCTURES_H_INCLUDED

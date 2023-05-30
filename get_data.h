@@ -6,9 +6,9 @@ void readDataFromFile(FILE* file, struct person* p, int* numPeople)
                                             p[*numPeople].name, p[*numPeople].surname, &(p[*numPeople].phone),
                                             p[*numPeople].address, &(p[*numPeople].ID), &(p[*numPeople].dueDate)) == 6)
     {
-        fscanf(file, "%d", &p[*numPeople].userBooks.numOfBooks);
-        for(int i=0; i<p[*numPeople].userBooks.numOfBooks; i++){
-            fscanf(file, "%s", p[*numPeople].userBooks.BB[i].title);
+        fscanf(file, "%d", &p[*numPeople].numOfBooks);
+        for(int i=0; i<p[*numPeople].numOfBooks; i++){
+            fscanf(file, "%s", p[*numPeople].BB[i]);
         }
         (*numPeople)++;
     }

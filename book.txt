@@ -98,6 +98,3 @@ book97   author22   1   5
 book98   author23   4   5
 book99   author24   4   5
 book100  author25   1   5
-
-book1  author1  (1 book available))
-book777  author777  (1 book available))

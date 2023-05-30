@@ -10,9 +10,9 @@ void update_data(int NOU, struct person p[]){
 
     for (int i = 0; i < NOU; i++) {
         fprintf(fp, "%s %s %lf %s %d %d\n", p[i].name, p[i].surname, p[i].phone, p[i].address, p[i].ID, p[i].dueDate);
-        fprintf(fp, "%d", p[i].userBooks.numOfBooks);
-        for(int j=0; j<p[i].userBooks.numOfBooks; j++){
-            printf(fp, "%s", p[i].userBooks.BB[j].title);
+        fprintf(fp, "%d", p[i].numOfBooks);
+        for(int j=0; j<p[i].numOfBooks; j++){
+            fprintf(fp, "%s", p[i].BB[j]);
         }
     }
 
@@ -59,18 +59,18 @@ void editUser(struct person p[], struct book b[], int NOU,  int NOB){
         }
         else if(option == 6){ //returning book
             int lastElement;    char bookReturn[50];
-            if(p[userI].userBooks.numOfBooks == 0){//checks if he has not borrowed any books
+            if(p[userI].numOfBooks == 0){//checks if he has not borrowed any books
                 printf("the selected user has not borrowed any books previously\n");
             }
             else{
                 printf("enter the book the user is returning:  ");
                 scanf("%s", bookReturn);
                 int found=0;
-                for(int i=0; i<p[userI].userBooks.numOfBooks; i++){
-                    if(strcmp(bookReturn, p[userI].userBooks.BB[i].title) == 0){
-                        lastElement = p[userI].userBooks.numOfBooks - 1;
-                        p[userI].userBooks.BB[i]= p[userI].userBooks.BB[lastElement];
-                        p[userI].userBooks.numOfBooks--; //changing the number of books borrowed
+                for(int i=0; i<p[userI].numOfBooks; i++){
+                    if(strcmp(bookReturn, p[userI].BB[i]) == 0){
+                        lastElement = p[userI].numOfBooks - 1;
+                        strcpy(p[userI].BB[i], p[userI].BB[lastElement]);
+                        p[userI].numOfBooks--; //changing the number of books borrowed
                         found = 1;
                         break;
                     }
@@ -80,17 +80,17 @@ void editUser(struct person p[], struct book b[], int NOU,  int NOB){
             }
         }
         else if(option == 7){ //borrowing book
-            if(p[userI].userBooks.numOfBooks == 5){
+            if(p[userI].numOfBooks == 5){
                 printf("the user can no longer borrow any other books since they have reached the limits\n");
             }
             else{
                 bookI = findBook(NOB, b); //create the function to find the book
-                while(bookI ==-1){
+                while(bookI == -1){
                     bookI = findBook(NOB, b); //create the function to find the book
                 }
                 b[bookI].amount--; //decreasing the books in the file
-                p[userI].userBooks.BB[p[userI].userBooks.numOfBooks] = b[bookI]; //adding the book details for the user
-                p[userI].userBooks.numOfBooks++; //increasing the number of books the user borrowed
+                strcpy( p[userI].BB[p[userI].numOfBooks], b[bookI].title ); //adding the book details for the user
+                p[userI].numOfBooks++; //increasing the number of books the user borrowed
             }
         }
         else
@@ -137,18 +137,18 @@ void editUserID(struct person p[], struct book b[], int NOU, int NOB, int userI)
         }
         else if(option == 6){ //returning book
             int lastElement;    char bookReturn[50];
-            if(p[userI].userBooks.numOfBooks == 0){//checks if he has not borrowed any books
+            if(p[userI].numOfBooks == 0){//checks if he has not borrowed any books
                 printf("the selected user has not borrowed any books previously\n");
             }
             else{
                 printf("enter the book the user is returning:  ");
                 scanf("%s", bookReturn);
                 int found=0;
-                for(int i=0; i<p[userI].userBooks.numOfBooks; i++){
-                    if(strcmp(bookReturn, p[userI].userBooks.BB[i].title) == 0){
-                        lastElement = p[userI].userBooks.numOfBooks - 1;
-                        p[userI].userBooks.BB[i]= p[userI].userBooks.BB[lastElement];
-                        p[userI].userBooks.numOfBooks--; //changing the number of books borrowed
+                for(int i=0; i<p[userI].numOfBooks; i++){
+                    if(strcmp(bookReturn, p[userI].BB[i]) == 0){
+                        lastElement = p[userI].numOfBooks - 1;
+                        strcpy(p[userI].BB[i], p[userI].BB[lastElement]);
+                        p[userI].numOfBooks--; //changing the number of books borrowed
                         found = 1;
                         break;
                     }
@@ -158,7 +158,7 @@ void editUserID(struct person p[], struct book b[], int NOU, int NOB, int userI)
             }
         }
         else if(option == 7){ //borrowing book
-            if(p[userI].userBooks.numOfBooks == 5){
+            if(p[userI].numOfBooks == 5){
                 printf("the user can no longer borrow any other books since they have reached the limits\n");
             }
             else{
@@ -167,8 +167,8 @@ void editUserID(struct person p[], struct book b[], int NOU, int NOB, int userI)
                     bookI = findBook(NOB, b); //create the function to find the book
                 }
                 b[bookI].amount--; //decreasing the books in the file
-                p[userI].userBooks.BB[p[userI].userBooks.numOfBooks] = b[bookI]; //adding the book details for the user
-                p[userI].userBooks.numOfBooks++; //increasing the number of books the user borrowed
+                strcpy(p[userI].BB[p[userI].numOfBooks], b[bookI].title); //adding the book details for the user
+                p[userI].numOfBooks++; //increasing the number of books the user borrowed
             }
         }
         else
